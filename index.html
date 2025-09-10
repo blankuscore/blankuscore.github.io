@@ -1,432 +1,74 @@
-<!--Timeline carousel-->
-<!DOCTYPE html><html><body>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://codepen.io/blankuscore/pen/dywVobd">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900" rel="stylesheet">
-  <link href="styles/style.scss" rel="stylesheet"/>
-  <link rel="stylesheet" media="screen" href="https://cpwebassets.codepen.io/assets/fullpage/fullpage-7d0085e88e3f06095d712efc55f79fc6aedaeed08967649de30e3ea674797898.css">
-  <link rel="stylesheet" media="all" href="https://cpwebassets.codepen.io/assets/global/global-5626bfce60aebe55017a4ca5d0cf267d2fce1d1f4c0712e22f40fa22d6f97484.css">
-  <link rel="stylesheet" media="screen" href="https://cpwebassets.codepen.io/assets/packs/css/everypage-8241b536.css">
-  <link rel="stylesheet" media="all" href="https://cpwebassets.codepen.io/assets/page/page-d67d8b402666f577e2b63a27d75bd7d44e24919cdaa0c0ef850e7504745c646a.css">
-  <link rel="stylesheet" media="all" href="https://cpwebassets.codepen.io/assets/editor/editor-fd58a62284b4f2d06087cac60636548a57fa7b6005bfdce9432d38de2591aa89.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-</head>
-<style>  
-  body {
-    margin: 0;
-    background-color: #1d1d1e;
-    font-family: "Roboto", sans-serif;
-  }
-
-  * {
-    outline: none;
-  }
-
-  .timeline-carousel {
-    padding: 86px 6.9444% 90px 6.9444%;
-    position: relative;
-    overflow: hidden;
-  }
-  .timeline-carousel:after, .timeline-carousel:before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 0;
-    height: 100%;
-    width: 6.9444%;
-    background-color: #1d1d1e;
-    z-index: 3;
-    width: 6.9444%;
-  }
-  .timeline-carousel:after {
-    left: 0;
-  }
-  .timeline-carousel:before {
-    right: 0;
-    opacity: 0;
-  }
-  .timeline-carousel .slick-list {
-    overflow: visible;
-  }
-  .timeline-carousel .slick-dots {
-    bottom: -73px;
-  }
-  .timeline-carousel h1 {
-    color: white;
-    font-size: 46px;
-    line-height: 50pd;
-    margin-bottom: 40px;
-    font-weight: 900;
-  }
-  .timeline-carousel__image {
-    padding-right: 30px;
-  }
-  .timeline-carousel__item {
-    cursor: pointer;
-  }
-  .timeline-carousel__item .media-wrapper {
-    opacity: 0.4;
-    padding-bottom: 71.4%;
-    -webkit-transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    -o-transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-  }
-  .timeline-carousel__item:last-child .timeline-carousel__item-inner:after {
-    width: calc(100% - 30px);
-  }
-  .timeline-carousel__item-inner {
-    position: relative;
-    padding-top: 45px;
-  }
-  .timeline-carousel__item-inner:after {
-    position: absolute;
-    width: 100%;
-    top: 45px;
-    left: 0;
-    content: "";
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  .timeline-carousel__item-inner .year {
-    font-size: 36px;
-    line-height: 36px;
-    color: white;
-    display: table;
-    letter-spacing: -1px;
-    padding-right: 10px;
-    background-color: #1d1d1e;
-    z-index: 1;
-    position: relative;
-    margin: -15px 0 20px;
-    font-weight: 900;
-  }
-  .timeline-carousel__item-inner .year:after {
-    content: "";
-    position: absolute;
-    display: block;
-    left: -10px;
-    top: 0;
-    height: 100%;
-    width: 10px;
-    background-color: #1d1d1e;
-    z-index: 3;
-  }
-  .timeline-carousel__item-inner .month {
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #b38c52;
-    display: block;
-    margin-bottom: 10px;
-    font-weight: 900;
-  }
-  .timeline-carousel__item-inner p {
-    font-size: 12px;
-    line-height: 18px;
-    color: white;
-    width: 60%;
-    font-weight: 400;
-    margin-bottom: 15px;
-  }
-  .timeline-carousel__item-inner .read-more {
-    font-size: 12px;
-    color: #b38c52;
-    display: table;
-    margin-bottom: 10px;
-    font-weight: 900;
-    text-decoration: none;
-    position: relative;
-  }
-  .timeline-carousel__item-inner .read-more:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 0;
-    border-bottom: 2px solid #b38c52;
-    -webkit-transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    -o-transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-  }
-  .timeline-carousel__item-inner .read-more:hover:after {
-    width: 100%;
-  }
-  .timeline-carousel__item-inner .pointer {
-    height: 29px;
-    position: relative;
-    z-index: 1;
-    margin: -4px 0 16px;
-  }
-  .timeline-carousel__item-inner .pointer:after, .timeline-carousel__item-inner .pointer:before {
-    position: absolute;
-    content: "";
-  }
-  .timeline-carousel__item-inner .pointer:after {
-    width: 9px;
-    height: 9px;
-    border-radius: 100%;
-    top: 0;
-    left: 0;
-    background-color: #b38c52;
-  }
-  .timeline-carousel__item-inner .pointer:before {
-    width: 1px;
-    height: 100%;
-    top: 0;
-    left: 4px;
-    background-color: #b38c52;
-  }
-  .timeline-carousel .slick-active .media-wrapper {
-    opacity: 1 !important;
-  }
-
-  .slick-dots {
-    bottom: 60px;
-    list-style: none;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    text-align: center;
-    z-index: 2;
-  }
-  .slick-dots li {
-    cursor: pointer;
-    display: inline-block;
-    margin: 0 6px;
-    position: relative;
-    width: 10px;
-    height: 10px;
-  }
-  .slick-dots li:last-child {
-    margin-right: 0;
-  }
-  .slick-dots li.slick-active button {
-    background: #b38c52;
-    border-color: #b38c52;
-  }
-  .slick-dots li button {
-    display: block;
-    font-size: 0;
-    width: 10px;
-    height: 10px;
-    padding: 0;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-color: rgba(255, 255, 255, 0.6);
-    cursor: pointer;
-    -webkit-transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    -o-transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-  }
-  .slick-dots li button:hover {
-    background: #b38c52;
-    border-color: #b38c52;
-  }
-
-  .link {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 20px;
-    z-index: 9999;
-  }
-  .link a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #fff;
-  }
-  .link .fa {
-    font-size: 28px;
-    margin-right: 8px;
-    color: #fff;
-  }
-</style>
-<section class="timeline-carousel">
-  <h1>Martinjak Family 2023</h1>
-  <div class="timeline-carousel__item-wrapper" data-js="timeline-carousel">
-      <!--Timeline item-->
-      <div class="timeline-carousel__item">
-          <div class="timeline-carousel__image">
-              <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/QqUkAVp.jpg') center center; background-size:cover;"></div>
-          </div>
-          <div class="timeline-carousel__item-inner">
-              <span class="year">January</span>
-              <span class="month">16JAN23</span>
-              <p>Greg attended his first professional NBA game sitting in box seats provided by his company, nVent.</p>
-            <a href="https://imgur.com/a/7pDMeQR" class="read-more">Read more</a>
-          </div>
-      </div>
-     <!--/Timeline item-->
-     
-      <!--Timeline item-->
-      <div class="timeline-carousel__item">
-          <div class="timeline-carousel__image">
-              <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/IyiZFAF.jpg') center center; background-size:cover;"></div>
-          </div>
-          <div class="timeline-carousel__item-inner">
-              <div class="pointer"></div>
-              <span class="month">22JAN23	</span>
-              <p>Celebrating the start of Lunar New Year 2023.</p>
-            <a href="https://imgur.com/a/uixu8mx" class="read-more">Read more</a>
-          </div>
-      </div>
-     <!--/Timeline item-->
-     <!--Timeline item-->
-      <div class="timeline-carousel__item">
-          <div class="timeline-carousel__image">
-              <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/44smv7U.jpg') center center; background-size:cover;"></div>
-          </div>
-          <div class="timeline-carousel__item-inner">
-              <span class="year">May</span>
-              <span class="month">02MAY23</span>
-              <p>Uncle David teaching Mae how to hack all the things.</p>
-            <a href="https://imgur.com/a/faYHbjh" class="read-more">Read more</a>
-          </div>
-      </div>
-     <!--/Timeline item-->
-    <!--Timeline item-->
-      <div class="timeline-carousel__item">
-          <div class="timeline-carousel__image">
-              <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/fJERWCI.png?1') center center; background-size:cover;"></div>
-          </div>
-          <div class="timeline-carousel__item-inner">
-              <div class="pointer"></div>
-              <span class="month">20MAY23</span>
-              <p>Attending the Cleveland Asian Festival for the first time.</p>
-            <a href="https://imgur.com/a/swOxWhE" class="read-more">Read more</a>
-          </div>
-      </div>
-     <!--/Timeline item-->
-     <!--Timeline item-->
-      <div class="timeline-carousel__item">
-          <div class="timeline-carousel__image">
-              <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/SpppCS6.jpg') center center; background-size:cover;"></div>
-          </div>
-          <div class="timeline-carousel__item-inner">
-              <span class="year">June</span>
-              <span class="month">15JUN23</span>
-              <p>Greg taught about substation safety and grounding in Myrtle Beach.	</p>
-            <a href="https://imgur.com/a/8xSjUlA" class="read-more">Read more</a>
-          </div>
-      </div>
-     <!--/Timeline item-->
-<!--Timeline item-->
-      <div class="timeline-carousel__item">
-          <div class="timeline-carousel__image">
-              <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/8K6ktwX.jpg') center center; background-size:cover;"></div>
-          </div>
-          <div class="timeline-carousel__item-inner">
-              <div class="pointer"></div>
-              <span class="month">16JUN23</span>
-              <p>Celebrating Grandma & Grandpa's 50th anniversary.	</p>
-            <a href="https://imgur.com/a/REcnLnH" class="read-more">Read more</a>
-          </div>
-      </div>
-     <!--/Timeline item-->
-     <!--Timeline item-->
-      <div class="timeline-carousel__item">
-          <div class="timeline-carousel__image">
-              <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/rhPYl8H.jpg') center center; background-size:cover;"></div>
-          </div>
-          <div class="timeline-carousel__item-inner">
-              <span class="year">August</span>
-              <span class="month">05AUG23	</span>
-              <p>Vacation in Sandusky, OH.	</p>
-            <a href="https://imgur.com/a/gOdqJda" class="read-more">Read more</a>
-          </div>
-      </div>
-     <!--/Timeline item-->
-     
-     <!--Timeline item-->
-      <div class="timeline-carousel__item">
-          <div class="timeline-carousel__image">
-              <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/EdwVsXw.jpg') center center; background-size:cover;"></div>
-          </div>
-          <div class="timeline-carousel__item-inner">
-              <div class="pointer"></div>
-              <span class="month">27AUG23</span>
-              <p>Regular Cleveland Zoo visits with twin friends.	</p>
-            <a href="https://imgur.com/a/zof5hwJ" class="read-more">Read more</a>
-          </div>
-      </div>
-     <!--/Timeline item-->
-     
-     <!--Timeline item-->
-      <div class="timeline-carousel__item">
-          <div class="timeline-carousel__image">
-              <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/4HOBMJP.jpg') center center; background-size:cover;"></div>
-          </div>
-          <div class="timeline-carousel__item-inner">
-              <span class="year">September</span>
-              <span class="month">02SEP23	</span>
-              <p>Attending The Great Geauga County Fair, Ohio's oldest continuous county fair and one of the oldest existing agricultural fairs in the nation.	</p>
-            <a href="https://imgur.com/a/FWehdLK" class="read-more">Read more</a>
-          </div>
-      </div>
-      
-      <div class="timeline-carousel__item">
-        <div class="timeline-carousel__image">
-            <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/ndQhjmT.jpg') center center; background-size:cover;"></div>
-        </div>
-        <div class="timeline-carousel__item-inner">
-            <span class="year">October</span>
-            <span class="month">31OCT23	</span>
-            <p>Dressing up as Sally from Nightmare Before Christmas to celebrate Halloween!</p>
-          <a href="https://imgur.com/a/02zs71b" class="read-more">Read more</a>
-        </div>
-      </div>
-
-      <div class="timeline-carousel__item">
-        <div class="timeline-carousel__image">
-            <div class="media-wrapper media-wrapper--overlay" style="background: url('https://i.imgur.com/LSOspVe.jpg') center center; background-size:cover;"></div>
-        </div>
-        <div class="timeline-carousel__item-inner">
-            <span class="year">November</span>
-            <span class="month">27NOV23	</span>
-            <p>All the fall activities and getting ready for the big month of December.</p>
-          <a href="https://imgur.com/a/RqECTgm" class="read-more">Read more</a>
-        </div>
-      </div>
-
+<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+  <div class = "image_div">
+    <img class="image_image" src="https://i.imgur.com/MFBcuGK.png" draggable="false">
+    <div class = "image_overlay">
+      <div class = "image_title">Schematics</div>
+      <p class = "image_description">
+        Electronic designs with schematic files
+      </p>
     </div>
-     <!--/Timeline item-->
   </div>
-</section>
-<!--Timeline carousel-->
-<script src="scripts/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
-<script id="rendered-js">
-    
-  $.js = function (el) {
-    return $("[data-js=" + el + "]");
-  };
-
-  function carousel() {
-    $.js("timeline-carousel").slick({
-      infinite: false,
-      arrows: false,
-      dots: true,
-      autoplay: false,
-      speed: 1100,
-      slidesToShow: 2,
-      slidesToScroll: 2,
-      responsive: [
-        {
-          breakpoint: 800,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
-    });
-  }
-
-  carousel();
-      
-</script>
-</body>
-</html>
+  <div class = "image_div">
+    <img class="image_image" src="https://i.imgur.com/jAx3yf1.jpeg" draggable="false">
+    <div class = "image_overlay">
+      <div class = "image_title">Firmware</div>
+      <p class = "image_description">
+        Projects focused on firmware for esp32 and stm32 microcontrollers
+      </p>
+    </div>
+  </div>
+  <div class = "image_div">
+  <img class="image_image" src="https://i.imgur.com/B5dul5a.png" draggable="false">
+  <div class = "image_overlay">
+      <div class = "image_title">Software</div>
+      <p class = "image_description">
+        Python and javascript based projects
+      </p>
+    </div>
+  </div>
+  <div class = "image_div">
+  <img class="image_image" src="https://i.imgur.com/QzJgtCH.png" draggable="false">
+  <div class = "image_overlay">
+      <div class = "image_title">My Inventions</div>
+      <p class = "image_description">
+        Things I've designed or invented in production.
+      </p>
+    </div>
+  </div>
+  <div class = "image_div">
+  <img class="image_image" src="https://i.imgur.com/9R14YGO.jpg" draggable="false">
+  <div class = "image_overlay">
+      <div class = "image_title">CodePen</div>
+      <p class = "image_description">
+        Front end development projects
+      </p>
+    </div>
+  </div>
+  <div class = "image_div">
+  <img class="image_image" src="https://i.imgur.com/WZ1zrMe.png" draggable="false">
+  <div class = "image_overlay">
+      <div class = "image_title">About me</div>
+      <p class = "image_description">
+        Generic information about me!
+      </p>
+    </div>
+  </div>
+  <div class = "image_div">
+  <img class="image_image" src="https://static.vecteezy.com/system/resources/previews/006/417/311/large_2x/outline-email-icon-isolated-on-grey-background-open-envelope-pictogram-line-mail-symbol-for-website-design-mobile-application-ui-illustration-eps10-free-vector.jpg" draggable="false">
+  <div class = "image_overlay">
+      <div class = "image_title">Contact me</div>
+      <p class = "image_description">
+        Get in touch!
+      </p>
+    </div>
+  </div>
+  <div class = "image_div">
+  <img class="image_image" src="https://images.unsplash.com/photo-1516681100942-77d8e7f9dd97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" draggable="false">
+  <div class = "image_overlay">
+      <div class = "image_title">Image 1</div>
+      <p class = "image_description">
+        here is a brick wall.
+      </p>
+    </div>
+  </div>
+</div>
